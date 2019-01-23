@@ -1,0 +1,36 @@
+{
+  "name": "noxbot",
+  "version": "1.0.0",
+  "description": "Bot for Twitch Stream",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bot": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NoxPhoenix/noxbot.git"
+  },
+  "keywords": [
+    "twitch"
+  ],
+  "author": "NoxPhoenix",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NoxPhoenix/noxbot/issues"
+  },
+  "homepage": "https://github.com/NoxPhoenix/noxbot#readme",
+  "dependencies": {
+    "bluebird": "^3.5.3",
+    "color-convert": "^1.9.3",
+    "magic-home": "^1.4.0",
+    "node-ifttt-maker": "^1.0.2",
+    "twitch-bot": "^1.2.5",
+    "cryptiles": ">=4.1.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.18.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.7.0"
+  }
+}
