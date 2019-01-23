@@ -12,8 +12,8 @@ const chat = new TwitchBot({
 chat.on('join', console.log);
 chat.on('message', (message) => {
   const command = (message.message.startsWith('!')) ? message.message.split(' ') : [];
-  if (command[0] === '!light') {
-    return commands.light(command[1]);
+  if (command[0] === '!lights') {
+    return commands.lights(command[1]);
   }
   return null;
 });
