@@ -1,7 +1,8 @@
 const TwitchBot = require('twitch-bot');
-const commands = require('./commands');
 
 const { oauth } = require('./config');
+
+const messageHandler = require('./lib/eventHandlers/message');
 
 const chat = new TwitchBot({
   username: 'noxphoenix_bot',
@@ -9,15 +10,10 @@ const chat = new TwitchBot({
   channels: ['noxphoenix'],
 });
 
-chat.on('join', console.log);
-chat.on('message', (message) => {
-  const command = (message.message.startsWith('!')) ? message.message.split(' ') : [];
-  if (command[0] === '!lights') {
-    return commands.lights(command[1]);
-  }
-  return null;
+chat.on('join', (channel) => {
+  console.log(`Bot has joined ${channel}`);
+  messageHandler(chat);
 });
-chat.say('hi!', 'noxphoenix');
 
 chat.on('error', console.log);
 
