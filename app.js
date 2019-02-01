@@ -2,18 +2,21 @@ const TwitchBot = require('twitch-bot');
 
 const { oauth } = require('./config');
 
-const messageHandler = require('./lib/eventHandlers/message');
+const messageHandler = require('./src/eventHandlers/message');
 
-const chat = new TwitchBot({
+const chatBot = new TwitchBot({
   username: 'noxphoenix_bot',
   oauth,
-  channels: ['noxphoenix'],
+  channels: ['noxphoenix', 'snowmnason'],
 });
 
-chat.on('join', (channel) => {
+chatBot.on('join', (channel) => {
   console.log(`Bot has joined ${channel}`);
-  messageHandler(chat);
+  chatBot.say('Hello! I am here!', channel);
+  messageHandler(chatBot);
 });
 
-chat.on('error', console.log);
+chatBot.on('part', channel => console.log(`Left ${channel}`));
+
+chatBot.on('error', console.log);
 

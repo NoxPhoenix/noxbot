@@ -3,7 +3,7 @@ const Promise = require('bluebird');
 const colorConvert = require('color-convert');
 const colorNames = require('colornames');
 
-const lightStrip = require('./magicHome');
+const lightStrip = require('../lib/magicHome');
 const iftttTrigger = require('./IFTTT');
 
 const colors = {

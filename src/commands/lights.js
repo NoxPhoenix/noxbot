@@ -1,9 +1,8 @@
-const lightStrip = require('../../utils/magicHome');
+const lightStrip = require('../../lib/magicHome');
 const colorConvert = require('color-convert');
 const colorNames = require('colornames');
-const moment = require('moment');
 
-const iftttTrigger = require('../../utils/IFTTT');
+const { IFTTT: iftttTrigger, cache } = require('../../utils');
 
 const colors = {
   purple: '#8A2BE2',
@@ -16,8 +15,6 @@ const colors = {
   white: 'FFFFFF',
 };
 
-const coolDowns = {};
-
 const nearestColor = require('nearest-color').from(colors);
 
 function changeLightColors ({ rgb, colorName }) {
@@ -26,13 +23,19 @@ function changeLightColors ({ rgb, colorName }) {
 }
 
 module.exports = {
-  lights ({ chatBot, message }, color) {
-    console.log(message);
+  async lights ({ chatBot, message }, color) {
+    const { channel } = message;
+    console.log(channel);
+    const cacheExpiration = await cache.getExpiration('lights');
+    if (cacheExpiration > 0) return chatBot.say(`That's too soon! Lights can be changes again in ${cacheExpiration} seconds!`, channel);
     const colorLookup = colorNames(color);
     const rgb = colorConvert.hex.rgb(colorLookup);
     const { name: colorName } = nearestColor(colorLookup);
-    chatBot.say(`Changing lights to ${color}! Thanks `);
-    if (colorLookup) return changeLightColors({ rgb, colorName });
+    chatBot.say(`Changing lights to ${color}! Thanks @${message.username}`, channel);
+    if (colorLookup) {
+      return changeLightColors({ rgb, colorName })
+        .then(() => cache.setCache('lights', colorName, 60));
+    }
     return null;
   },
 };

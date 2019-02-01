@@ -1,0 +1,14 @@
+version: '2.1'
+
+services:
+  noxbot:
+    image: noxbot
+    build: .
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000:3000
+  redis:
+    image: "redis"
+    ports:
+      - 6379:6379

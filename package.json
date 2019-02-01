@@ -22,6 +22,8 @@
   "homepage": "https://github.com/NoxPhoenix/noxbot#readme",
   "dependencies": {
     "@gordalina/magic-home": "^1.2.0",
+    "axios": "^0.18.0",
+    "axios-cookiejar-support": "^0.4.2",
     "bluebird": "^3.5.3",
     "color-convert": "^1.9.3",
     "colornames": "^1.1.1",
@@ -30,6 +32,9 @@
     "moment": "^2.24.0",
     "nearest-color": "git+https://github.com/dtao/nearest-color.git",
     "node-ifttt-maker": "^1.0.2",
+    "redis": "^2.8.0",
+    "request-promise": "^4.2.2",
+    "tough-cookie": "^3.0.0",
     "twitch-bot": "^1.2.5"
   },
   "devDependencies": {

@@ -1,6 +1,8 @@
 const IFTTT = require('node-ifttt-maker');
 
-const ifttt = new IFTTT('kPLW1nntsbVKGuWj5EPj4Bo3CW1wyDVVg3Cu3HnYzJO');
+const { iftttKey } = require('../config');
+
+const ifttt = new IFTTT(iftttKey);
 
 function triggerThis (color) {
   return ifttt
