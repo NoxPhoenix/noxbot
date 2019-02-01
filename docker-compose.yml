@@ -3,9 +3,8 @@ version: '2.1'
 services:
   noxbot:
     image: noxbot
-    build: .
-    environment:
-      NODE_ENV: production
+    build:
+      context: "."
     ports:
       - 3000:3000
   redis:

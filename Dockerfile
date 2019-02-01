@@ -1,8 +1,8 @@
 FROM node:10.15-alpine
-ENV NODE_ENV production
+RUN apk --no-cache --update add bash git
+RUN mkdir usr/src/app -p
 WORKDIR /usr/src/app
-COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
-RUN npm install --silent && mv node_modules ../
+COPY "package.json" .
+RUN npm install
 COPY . .
-EXPOSE 3000
 CMD node app.js
