@@ -1,27 +1,25 @@
 const Promise = require('bluebird');
-
+// eslint ignore-next-line
 const colorConvert = require('color-convert');
-const colorNames = require('colornames');
 
 const lightStrip = require('../lib/magicHome');
-const iftttTrigger = require('./IFTTT');
+const sengledClient = require('../lib/sengledClient');
 
-const colors = {
-  purple: '#8A2BE2',
-  blue: '0064FF',
-  yellow: 'FFFF00',
-  red: 'FF0000',
-  pink: 'F700FF',
-  orange: 'FFA200',
-  green: '00FF13',
-  white: 'FFFFFF',
-};
 
 function isBetween (value, min, max) {
   return (value >= min) && (value <= max);
 }
 
+
 module.exports = {
+  setColor (color) {
+    return Promise.all([
+      sengledClient.deviceSetGroupColor(color),
+      // lightStrip.setColor(color),
+    ])
+      .catch(console.warn);
+  },
+
   purpleFlash () {
     return lightStrip.setPatternAsync('purple_strobe_flash', 96);
   },

@@ -10,6 +10,7 @@ class MessageHandler {
   constructor (chatBot) {
     this.chatBot = chatBot;
     this.chatBot.on('message', (message) => {
+      console.log(message);
       if (message.message.startsWith('!')) {
         const { command, args } = commandAndArgsFromMessage(message.message);
         if (commands[command]) return commands[command]({ chatBot, message }, ...args);

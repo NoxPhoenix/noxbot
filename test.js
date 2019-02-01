@@ -5,13 +5,13 @@ const cache = require('./utils/cache');
 
 const { sengledUsername, sengledPassword, sengledDevices } = require('./config');
 
-const client = new Client({ username: sengledUsername, password: sengledPassword });
+const client = new Client({ username: sengledUsername, password: sengledPassword, devices: sengledDevices });
 
 client.login()
-  .then(() => client.deviceSetGroupColor(sengledDevices, [0, 255, 0]))
+  .then(() => client.deviceSetGroupColor([0, 255, 0]))
   .then(() => Promise.delay(500))
-  .then(() => client.deviceSetGroupColor(sengledDevices, [255, 255, 0]))
-  .then(() => client.deviceSetGroupColor(sengledDevices, [255, 0, 0]));
+  .then(() => client.deviceSetGroupColor([255, 255, 0]))
+  .then(() => client.deviceSetGroupColor([255, 0, 0]));
 
 cache.setCache('test', 'value1', 10)
   .then((res) => {
