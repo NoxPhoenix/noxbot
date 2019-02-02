@@ -10,7 +10,6 @@ module.exports = {
     const cacheExpiration = await cache.getExpiration('lights');
     if (cacheExpiration > 0) return chatBot.say(`That's too soon! Lights can be changes again in ${cacheExpiration} seconds!`, channel);
     const rgb = colorConvert.keyword.rgb(color);
-    console.log(rgb);
     if (!rgb) return chatBot.say(`That is not a valid color, please choose one from this list! ${cssColorList}`, channel);
     chatBot.say(`Changing lights to ${color}! Thanks @${message.username}`, channel);
     if (rgb) {

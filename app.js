@@ -7,12 +7,12 @@ const messageHandler = require('./src/eventHandlers/message');
 const chatBot = new TwitchBot({
   username: 'noxphoenix_bot',
   oauth,
-  channels: ['noxphoenix', 'snowmnason'],
+  channels: ['noxphoenix'],
 });
 
 chatBot.on('join', (channel) => {
   console.log(`Bot has joined ${channel}`);
-  // chatBot.say('Hello! I am here!', channel);
+  chatBot.say('Hello! I am here!', channel);
 });
 
 messageHandler(chatBot);
