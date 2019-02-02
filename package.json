@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "migrate": "node migrator/migrate.js",
     "bot": "nodemon app.js"
   },
   "repository": {
@@ -34,6 +35,8 @@
     "node-ifttt-maker": "^1.0.2",
     "redis": "^2.8.0",
     "request-promise": "^4.2.2",
+    "sqlite": "^3.0.1",
+    "sqlite3": "^4.0.6",
     "tough-cookie": "^3.0.0",
     "twitch-bot": "^1.2.5"
   },
