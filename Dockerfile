@@ -6,4 +6,5 @@ RUN npm install -g nodemon
 COPY "package.json" .
 RUN npm install
 COPY . .
+RUN npm run migrate
 CMD nodemon app.js -L
