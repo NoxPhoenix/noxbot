@@ -4,20 +4,43 @@ const colorConvert = require('color-convert');
 
 const lightStrip = require('../lib/magicHome');
 const sengledClient = require('../lib/sengledClient');
+const cache = require('./cache');
 
 
 function isBetween (value, min, max) {
   return (value >= min) && (value <= max);
 }
 
+function setColor (color, colorName) {
+  console.log(color);
+  return Promise.all([
+    sengledClient.deviceSetGroupColor(color),
+    lightStrip.setColorAsync(...color),
+  ])
+    .then(() => {
+      cache.setCache('color', colorName, 50000);
+    })
+    .catch(console.warn);
+}
 
 module.exports = {
-  setColor (color) {
-    return Promise.all([
-      sengledClient.deviceSetGroupColor(color),
-      // lightStrip.setColor(color),
-    ])
-      .catch(console.warn);
+  setColor,
+
+  async followFlash () {
+    const purple = [191, 0, 255];
+    const orange = [252, 171, 65];
+    const originalColorName = await cache.getCache('color');
+    const originalColorRGB = colorConvert.keyword.rgb(originalColorName);
+    return setColor(purple, 'purple')
+      .then(() => Promise.delay(150))
+      .then(() => setColor(orange, 'orange'))
+      .then(() => Promise.delay(150))
+      .then(() => setColor(purple, 'purple'))
+      .then(() => Promise.delay(150))
+      .then(() => setColor(orange, 'orange'))
+      .then(() => Promise.delay(150))
+      .then(() => setColor(purple, 'purple'))
+      .then(() => setColor(originalColorRGB, originalColorName));
   },
 
   purpleFlash () {

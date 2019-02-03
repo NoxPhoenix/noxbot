@@ -13,7 +13,7 @@ module.exports = {
     if (!rgb) return chatBot.say(`That is not a valid color, please choose one from this list! ${cssColorList}`, channel);
     chatBot.say(`Changing lights to ${color}! Thanks @${message.username}`, channel);
     if (rgb) {
-      return lights.setColor(rgb)
+      return lights.setColor(rgb, color)
         .then(() => cache.setCache('lights', color, 20));
     }
     return null;

@@ -3,6 +3,7 @@ const TwitchBot = require('twitch-bot');
 const { oauth } = require('./config');
 
 const messageHandler = require('./src/eventHandlers/message');
+const subHandler = require('./src/eventHandlers/subscription');
 
 const chatBot = new TwitchBot({
   username: 'noxphoenix_bot',
@@ -16,8 +17,8 @@ chatBot.on('join', (channel) => {
 });
 
 messageHandler(chatBot);
+subHandler(chatBot);
 
 chatBot.on('part', channel => console.log(`Left ${channel}`));
 
 chatBot.on('error', console.log);
-
