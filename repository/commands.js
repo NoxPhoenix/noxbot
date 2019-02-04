@@ -15,12 +15,12 @@ module.exports = {
       },
     )
       .tap(console.log)
-      .then(() => db.getAsync(`SELECT * FROM ${COMMAND_TABLE_NAME};`))
+      .then(() => db.allAsync(`SELECT * FROM ${COMMAND_TABLE_NAME};`))
       .tap(console.log);
   },
 
   getAllCommmands () {
-    return db.runAsync(`SELECT * FROM ${COMMAND_TABLE_NAME}`)
+    return db.allAsync(`SELECT * FROM ${COMMAND_TABLE_NAME}`)
       .then(console.log);
   },
 };
