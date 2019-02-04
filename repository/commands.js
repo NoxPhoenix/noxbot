@@ -1,4 +1,4 @@
-const db = require('../lib/db');
+const db = require('../clients/db');
 
 const COMMAND_TABLE_NAME = 'command';
 

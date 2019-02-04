@@ -1,6 +1,6 @@
 const { followFlash } = require('../../utils/lights');
 
-class FollowHandler {
+class SubscriptionHandler {
   constructor (chatBot) {
     this.chatBot = chatBot;
     this.chatBot.on('subscription', (subObject) => {
@@ -11,8 +11,8 @@ class FollowHandler {
   }
 }
 
-function followHandler (chatBot) {
-  return new FollowHandler(chatBot);
+function subscriptionHandler (chatBot) {
+  return new SubscriptionHandler(chatBot);
 }
 
-module.exports = followHandler;
+module.exports = subscriptionHandler;

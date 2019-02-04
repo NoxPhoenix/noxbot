@@ -2,8 +2,8 @@ const Promise = require('bluebird');
 // eslint ignore-next-line
 const colorConvert = require('color-convert');
 
-const lightStrip = require('../lib/magicHome');
-const sengledClient = require('../lib/sengledClient');
+const lightStrip = require('../clients/magicHome');
+const sengledClient = require('../clients/sengledClient');
 const cache = require('./cache');
 
 

@@ -1,4 +1,4 @@
-const cache = require('../lib/redisClient');
+const cache = require('../clients/redisClient');
 
 module.exports = {
   setCache (key, value, expiration = 100) {

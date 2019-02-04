@@ -4,6 +4,7 @@ const { oauth } = require('./config');
 
 const messageHandler = require('./src/eventHandlers/message');
 const subHandler = require('./src/eventHandlers/subscription');
+const followHandler = require('./src/eventHandlers/follow');
 
 const chatBot = new TwitchBot({
   username: 'noxphoenix_bot',
@@ -14,6 +15,7 @@ const chatBot = new TwitchBot({
 chatBot.on('join', (channel) => {
   console.log(`Bot has joined ${channel}`);
   chatBot.say('Hello! I am here!', channel);
+  followHandler(chatBot, channel);
 });
 
 messageHandler(chatBot);
