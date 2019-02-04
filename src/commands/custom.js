@@ -11,4 +11,8 @@ module.exports = {
       })
       .catch(err => chatBot.say(`Error making command: ${err}`, message.channel));
   },
+
+  delcom ({ chatBot, message }, commandName) {
+    return command
+  }
 };

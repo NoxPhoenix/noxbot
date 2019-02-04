@@ -14,7 +14,7 @@ module.exports = {
         $creator: creator,
       },
     )
-      .tap(console.log)
+      .tap(() => db.closeAsync)
       .then(() => db.allAsync(`SELECT * FROM ${COMMAND_TABLE_NAME};`))
       .tap(console.log);
   },
@@ -22,5 +22,9 @@ module.exports = {
   getAllCommmands () {
     return db.allAsync(`SELECT * FROM ${COMMAND_TABLE_NAME}`)
       .then(console.log);
+  },
+
+  deleteCommand (commandName) {
+    return db.runAsync(`DELETE FROM ${COMMAND_TABLE_NAME} WHERE command_name = $commandName`, { $commandName: commandName });
   },
 };
