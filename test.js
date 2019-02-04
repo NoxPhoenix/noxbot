@@ -1,8 +1,3 @@
-const client = require('./clients/streamlabsClient');
+const custom = require('./src/commands/custom');
 
-client.connect();
-
-client.on('follow', (data) => {
-  console.log(data);
-});
-
+console.log(custom);

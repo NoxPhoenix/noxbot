@@ -1,6 +1,6 @@
 -- Up
 CREATE TABLE command (
-  command_name TEXT PRIMARY KEY,
+  command_name VARCHAR(255) PRIMARY KEY,
   response TEXT NOT NULL,  
   accumulator INTEGER DEFAULT 0 NOT NULL,
   created_by TEXT NOT NULL

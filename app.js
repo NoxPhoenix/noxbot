@@ -24,3 +24,7 @@ subHandler(chatBot);
 chatBot.on('part', channel => console.log(`Left ${channel}`));
 
 chatBot.on('error', console.log);
+
+const { commands } = require('./repository');
+
+setTimeout(() => commands.getAllCommmands(), 15000);
