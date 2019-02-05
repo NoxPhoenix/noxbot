@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "migrate": "node migrator/migrate.js",
-    "bot": "nodemon app.js"
+    "local": "cross-env NODE_ENV=local nodemon app.js",
+    "swarm": "npm run migrate && nodemon app.js -L"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "bluebird": "^3.5.3",
     "color-convert": "^1.9.3",
     "colornames": "^1.1.1",
+    "cross-env": "^5.2.0",
     "magic-home": "^1.4.0",
     "nearest-color": "git+https://github.com/dtao/nearest-color.git",
     "redis": "^2.8.0",

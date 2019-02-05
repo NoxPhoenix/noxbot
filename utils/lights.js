@@ -12,7 +12,6 @@ function isBetween (value, min, max) {
 }
 
 function setColor (color, colorName) {
-  console.log(color);
   return Promise.all([
     sengledClient.deviceSetGroupColor(color),
     lightStrip.setColorAsync(...color),

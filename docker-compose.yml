@@ -3,6 +3,8 @@ version: '2.1'
 services:
   noxbot:
     image: noxbot
+    environment:
+      NODE_ENV: swarm
     build:
       context: "."
     ports:

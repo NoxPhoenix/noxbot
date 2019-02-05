@@ -6,5 +6,4 @@ RUN npm install -g nodemon
 COPY "package.json" .
 RUN npm install
 COPY . .
-CMD npm run migrate && \\
-  nodemon app.js -L
+CMD npm run swarm

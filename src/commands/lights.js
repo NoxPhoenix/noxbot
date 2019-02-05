@@ -6,7 +6,7 @@ const cssColorList = 'https://www.w3schools.com/colors/colors_names.asp';
 
 module.exports = {
   async lights ({ chatBot, message }, color) {
-    const colorName = color.toLowercase();
+    const colorName = color.toLowerCase();
     const { channel } = message;
     const cacheExpiration = await cache.getExpiration('lights');
     if (cacheExpiration > 0) return chatBot.say(`That's too soon! Lights can be changes again in ${cacheExpiration} seconds!`, channel);
