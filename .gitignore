@@ -64,3 +64,4 @@ typings/
 .vscode/
 .git-crypt
 config.js
+test.js
