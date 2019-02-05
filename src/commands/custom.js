@@ -13,6 +13,17 @@ module.exports = {
   },
 
   delcom ({ chatBot, message }, commandName) {
-    return command
-  }
+    const response = `Command ${commandName} deleted successfully`;
+    return commands.deleteCommand(commandName)
+      .then(() => chatBot.say(response, message.channel));
+  },
+
+  runCustom ({ chatBot, message }, { command_name: commandName, response, accumulator }, ...args) {
+    const count = accumulator + 1;
+    const toUser = args.shift();
+    const user = message.username;
+    const serializedResponse = response.replace('$(count)', count).replace('$(touser)', toUser).replace('$(user)', user);
+    chatBot.say(serializedResponse, message.channel);
+    return commands.incrementCommandCount(commandName, accumulator);
+  },
 };

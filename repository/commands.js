@@ -15,16 +15,19 @@ module.exports = {
       },
     )
       .tap(() => db.closeAsync)
-      .then(() => db.allAsync(`SELECT * FROM ${COMMAND_TABLE_NAME};`))
-      .tap(console.log);
+      .then(() => db.allAsync(`SELECT * FROM ${COMMAND_TABLE_NAME} WHERE command_name = $name;`, { $name: name }));
   },
 
   getAllCommmands () {
-    return db.allAsync(`SELECT * FROM ${COMMAND_TABLE_NAME}`)
-      .then(console.log);
+    return db.allAsync(`SELECT * FROM ${COMMAND_TABLE_NAME}`);
   },
 
   deleteCommand (commandName) {
     return db.runAsync(`DELETE FROM ${COMMAND_TABLE_NAME} WHERE command_name = $commandName`, { $commandName: commandName });
+  },
+
+  incrementCommandCount (name, currentCount) {
+    const count = currentCount + 1;
+    return db.runAsync(`UPDATE ${COMMAND_TABLE_NAME} SET accumulator = $count WHERE command_name = $name;`, { $count: count, $name: name });
   },
 };
