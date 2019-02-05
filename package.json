@@ -28,6 +28,7 @@
     "color-convert": "^1.9.3",
     "colornames": "^1.1.1",
     "cross-env": "^5.2.0",
+    "lodash": "^4.17.11",
     "magic-home": "^1.4.0",
     "nearest-color": "git+https://github.com/dtao/nearest-color.git",
     "redis": "^2.8.0",

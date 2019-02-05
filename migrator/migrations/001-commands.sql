@@ -3,6 +3,7 @@ CREATE TABLE command (
   command_name VARCHAR(255) PRIMARY KEY,
   response TEXT NOT NULL,  
   accumulator INTEGER DEFAULT 0 NOT NULL,
+  cool_down INTEGER DEFAULT 0 NOT NULL,
   created_by VARCHAR(255) NOT NULL
 );
 

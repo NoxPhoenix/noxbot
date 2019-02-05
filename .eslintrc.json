@@ -4,7 +4,7 @@
         "import"
     ],
     "rules": {
-        "arrow-body-style": ["warn", "never"],
+        "arrow-body-style": ["warn", "always"],
         "max-len": ["warn", 130],
         "space-before-function-paren": ["error", "always"]
     }

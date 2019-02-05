@@ -26,8 +26,29 @@ module.exports = {
     return db.runAsync(`DELETE FROM ${COMMAND_TABLE_NAME} WHERE command_name = $commandName`, { $commandName: commandName });
   },
 
-  incrementCommandCount (name, currentCount) {
+  editCommand (commandName, response) {
+    return db.runAsync(
+      `UPDATE ${COMMAND_TABLE_NAME}
+      SET response = $response WHERE command_name = $name;`,
+      { $response: response, $name: commandName },
+    );
+  },
+
+  incrementCommandCount (commandName, currentCount) {
     const count = currentCount + 1;
-    return db.runAsync(`UPDATE ${COMMAND_TABLE_NAME} SET accumulator = $count WHERE command_name = $name;`, { $count: count, $name: name });
+    return db.runAsync(
+      `UPDATE ${COMMAND_TABLE_NAME}
+      SET accumulator = $count WHERE command_name = $name;`,
+      { $count: count, $name: commandName },
+    );
+  },
+
+  resetCount (commandName) {
+    const count = 0;
+    return db.runAsync(
+      `UPDATE ${COMMAND_TABLE_NAME}
+      SET accumulator = $count WHERE command_name = $name;`,
+      { $count: count, $name: commandName },
+    );
   },
 };
