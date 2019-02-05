@@ -62,4 +62,5 @@ typings/
 
 # my stuff
 .vscode/
+.git-crypt
 config.js
