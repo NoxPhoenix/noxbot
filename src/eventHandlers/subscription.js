@@ -1,11 +1,13 @@
 const { followFlash } = require('../../utils/lights');
+const alertClient = require('../../clients/streamlabsClient');
 
 class SubscriptionHandler {
-  constructor (chatBot) {
-    this.chatBot = chatBot;
-    this.chatBot.on('subscription', (subObject) => {
-      const { channel, display_name: user } = subObject;
-      chatBot.say(`Thanks for subscribing @${user}!`, channel);
+  constructor (chatBot, channel) {
+    this.chatbot = chatBot;
+    this.channel = channel;
+    alertClient.on('subscription', (subObject) => {
+      const { name: user } = subObject;
+      chatBot.say(`HYPE! @${user} has subscribed! Thanks so much!`, this.channel);
       return followFlash();
     });
   }

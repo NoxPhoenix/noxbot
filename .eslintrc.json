@@ -3,6 +3,9 @@
     "plugins": [
         "import"
     ],
+    "parserOptions": {
+        "ecmaVersion": 7
+    },
     "rules": {
         "arrow-body-style": ["warn", "always"],
         "max-len": ["warn", 130],

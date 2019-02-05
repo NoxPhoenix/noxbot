@@ -16,10 +16,10 @@ chatBot.on('join', (channel) => {
   console.log(`Bot has joined ${channel}`);
   chatBot.say('Hello! I am here!', channel);
   followHandler(chatBot, channel);
+  subHandler(chatBot, channel);
 });
 
 messageHandler(chatBot);
-subHandler(chatBot);
 
 chatBot.on('part', channel => console.log(`Left ${channel}`));
 

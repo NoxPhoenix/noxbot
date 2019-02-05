@@ -7,7 +7,7 @@ class FollowHandler {
     this.channel = channel;
     alertClient.on('follow', (follow) => {
       const { name: user } = follow;
-      this.chatBot.say(`Thanks for following @${user}!`, channel);
+      chatBot.say(`Welcome to the Phoenix Nest @${user}!`, channel);
       return followFlash();
     });
   }
