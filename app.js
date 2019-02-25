@@ -14,7 +14,7 @@ const chatBot = new TwitchBot({
 
 chatBot.on('join', (channel) => {
   console.log(`Bot has joined ${channel}`);
-  chatBot.say('Hello! I am here!', channel);
+  // chatBot.say('Hello! I am here!', channel);
   followHandler(chatBot, channel);
   subHandler(chatBot, channel);
 });

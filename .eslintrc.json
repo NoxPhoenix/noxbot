@@ -4,11 +4,20 @@
         "import"
     ],
     "parserOptions": {
-        "ecmaVersion": 7
+        "ecmaVersion": 8
     },
     "rules": {
-        "arrow-body-style": ["warn", "always"],
+        "arrow-body-style": ["error", "as-needed"],
         "max-len": ["warn", 130],
-        "space-before-function-paren": ["error", "always"]
+        "space-before-function-paren": ["error", "always"],
+        "comma-dangle": [ "error",
+            {
+            "arrays": "only-multiline",
+            "objects": "only-multiline",
+            "imports": "only-multiline",
+            "exports": "only-multiline",
+            "functions": "never"
+            }
+        ]
     }
 }
